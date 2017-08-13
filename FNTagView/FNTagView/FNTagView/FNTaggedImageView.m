@@ -361,6 +361,9 @@
     if (!self.frame.size.width || !self.frame.size.height) {
         return;
     }
+    if (!tagView.xCon || !tagView.yCon) {
+        return;
+    }
     CGRect unionFrame = [tagView unionFrame];
     BOOL haveChanged = NO;
     if (!tagView.model.leftForward.boolValue) {
@@ -460,7 +463,6 @@
         for (FNTagModel* model in self.tags) {
             FNTagView* tag = [self addTagWithModel:model];
             [self adjustPosition:tag];
-            [self setNeedsUpdateConstraints];
         }
         [self setNeedsUpdateConstraints];
     }
